@@ -1,0 +1,25 @@
+global
+function math(context) {
+    return  context.scopes.findLastIndex(s => s.startsWith("meta.math")) > context.scopes.findLastIndex(s => s.startsWith("comment") || s.startsWith("meta.text.normal.tex"));
+}
+function notmath(context) {
+    return  context.scopes.findLastIndex(s => s.startsWith("meta.math")) <= context.scopes.findLastIndex(s => s.startsWith("comment") || s.startsWith("meta.text.normal.tex"));
+}
+endglobal
+
+
+snippet msnip "Math Snippet" A
+context math(context)
+snippet ${1: Shortkey} "${2:NAME}" ${3: Automatic, In-word, Word-Boundary, Begining, Multi-line}
+${4: \func}
+${5:endsnippet}
+endsnippet
+
+
+snippet snip "Snippet" A
+snippet ${1: Shortkey} "${2:NAME}" ${3: Automatic, In-word, Word-Boundary, Begining, Multi-line}
+${4: \func}
+${5:endsnippet}
+endsnippet
+
+
